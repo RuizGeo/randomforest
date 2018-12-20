@@ -1,2 +1,2 @@
-# randomforest
-Random Forest Plugin
+# Random Forest Plugin
+random forest
