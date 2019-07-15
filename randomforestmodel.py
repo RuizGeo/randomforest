@@ -5,6 +5,13 @@ Created on Fri Dec 14 11:02:43 2018
 
 @author: root
 """
+from PyQt5.QtCore import QObject, pyqtSignal
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from qgis.core import *
+# Import the code for the dialog
+from .randomforest_dialog import RandomForestDialog
 import sys
 import os
 import numpy as np
@@ -14,7 +21,7 @@ vector_is_readable,is_crs,is_join
 
  
     
-def RandomForestModel(path_train,segs_path,\
+def RandomForestModel(bar,path_train,segs_path,\
                                    path_val,start_est,\
                                    end_est,step_est,start_dp,\
                                    end_dp,step_dp,field_model_train,\
@@ -48,7 +55,10 @@ def RandomForestModel(path_train,segs_path,\
             #To evaluate vector readable
             if vector_is_readable(path_train,'Error reading the ')==False:
                 return 0
+
+            #Zero progressaBar
             
+            bar.setValue(0)
             #get dataframe training samples
             dft=gpd.read_file(path_train)
         
@@ -133,6 +143,7 @@ def RandomForestModel(path_train,segs_path,\
                     for t in range(int(start_est),int(end_est)+int(step_est),int(step_est)):
                         #Set progressbar
                         for md in range(int(start_dp),int(end_dp)+int(step_dp),int(step_dp)):  
+                            
                             #criar modelo Random Forest
                             clf = ensemble.RandomForestClassifier( n_estimators =t, max_depth =md, criterion=criterion_split)
                             #Ajustar modelo

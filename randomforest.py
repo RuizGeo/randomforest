@@ -619,7 +619,7 @@ class RandomForest:
             self.dlg.ui.progressBar.setValue(10)
 
             #Run Assess RFC
-            RandomForestModel(path_train,dataset_path,\
+            RandomForestModel(self.dlg.ui.progressBar,path_train,dataset_path,\
                     path_val,start_est,end_est,step_est,\
                     start_dp,end_dp,step_dp,field_model_train,\
                     field_model_val,criterion_split,path_assess_file,state_checkBox_model,model_path,type_model)
