@@ -115,9 +115,9 @@ def RandomForestModel(bar,path_train,segs_path,\
                 if 'id_seg' in dfs.columns:
                     dfs=dfs.drop(columns=['geometry','id_seg'])
                     #remove duplicates validation
-                    dfjv=dfjv.drop_duplicates(subset='id_seg')
+                    #dfjv=dfjv.drop_duplicates(subset='id_seg')
                     #remove duplicates training
-                    dfjt=dfjt.drop_duplicates(subset='id_seg')
+                    #dfjt=dfjt.drop_duplicates(subset='id_seg')
                 else:
                     dfs=dfs.drop(columns=['geometry'])
                 #Get columns names equal dtype=float
