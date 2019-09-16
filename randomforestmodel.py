@@ -212,11 +212,12 @@ def RandomForestModel(bar,path_train,segs_path,\
                 #Drop NaN validation
                 dfjv=dfjv.dropna(subset=features)
                 #Get features and remove geometry and id_seg
-                if 'id_seg' in df_dataset.columns:                    
+                '''if 'id_seg' in df_dataset.columns:  
+                    dfs=dfs.drop(columns=['geometry','id_seg'])
                     #remove duplicates validation
-                    dfjv=dfjv.drop_duplicates(subset='id_seg')
+                    #dfjv=dfjv.drop_duplicates(subset='id_seg')
                     #remove duplicates training
-                    dfjt=dfjt.drop_duplicates(subset='id_seg')
+                    #dfjt=dfjt.drop_duplicates(subset='id_seg')'''
                 #Apply model
                 if type_model =='classification':
                     #criar modelo Random Forest
